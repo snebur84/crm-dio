@@ -29,13 +29,10 @@
                 <td><a href="{{ customer.get_absolute_url }}">{{ customer.get_full_name }}</a></td>
                 <td>{{ customer.get_full_city }}</td>
                 <td>{{ customer.get_full_phone_number }}</td>
-                <td>{{ customer.email }}</td>
-
-                <form method="post" action="{{ customer.get_delete_url }}">{% csrf_token %}<!-- Botão para acionar modal -->
-                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalCentralizado">
+                <td>{{ customer.email }}</td>                
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalCentralizado">
                     Excluir
-                  </button></td>
-                </form>
+                </button></td>
               </tr>
             {% endfor %}
         </tbody>
@@ -56,9 +53,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-              <a href="{% url 'customer:customer-delete' %}">
+              <form method="post" action="{{ customer.get_delete_url }}">{% csrf_token %}
                 <button  type="submit" class="btn btn-success">Sim</button>
-              </a>
+              </form>
             </div>
           </div>
         </div>
