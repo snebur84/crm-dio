@@ -56,7 +56,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-              <button  type="submit" class="btn btn-success">Sim</button>
+              <a href="{% url 'customer:customer-delete' %}">
+                <button  type="submit" class="btn btn-success">Sim</button>
+              </a>
             </div>
           </div>
         </div>
