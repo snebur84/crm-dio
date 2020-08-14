@@ -29,10 +29,12 @@
                 <td><a href="{{ customer.get_absolute_url }}">{{ customer.get_full_name }}</a></td>
                 <td>{{ customer.get_full_city }}</td>
                 <td>{{ customer.get_full_phone_number }}</td>
-                <td>{{ customer.email }}</td>                
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalCentralizado">
-                    Excluir
-                </button></td>
+                <td>{{ customer.email }}</td>
+                <form method="post" action="{{ customer.get_delete_url }}">{% csrf_token %}               
+                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalCentralizado">
+                      Excluir
+                  </button></td>
+                </form>
               </tr>
             {% endfor %}
         </tbody>
@@ -52,10 +54,8 @@
               Tem certeza que deseja excluir o registro?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-              <form method="post" action="{{ customer.get_delete_url }}">{% csrf_token %}
-                <button  type="submit" class="btn btn-success">Sim</button>
-              </form>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>         
+              <button  type="submit" class="btn btn-success">Sim</button>
             </div>
           </div>
         </div>
